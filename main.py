@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from datetime import datetime
+from datetime import datetime, timezone
 from fastapi.middleware.cors import CORSMiddleware
 load_dotenv()
 app = FastAPI()
@@ -22,7 +22,7 @@ async def test() -> dict:
 
 @app.get("/result")
 async def result() -> dict:
-    now = datetime.now().isoformat()
+    now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     return {
         "email":"kikiopeawotile@gmail.com",
         "current_datetime": f"{now}",
