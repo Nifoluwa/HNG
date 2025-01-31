@@ -22,7 +22,7 @@ async def test() -> dict:
 
 @app.get("/result")
 async def result() -> dict:
-    now = datetime.now().replace(microsecond=0).isoformat()
+    now = datetime.now().isoformat()
     return {
         "email":"kikiopeawotile@gmail.com",
         "current_datetime": f"{now}",
