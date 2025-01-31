@@ -23,5 +23,5 @@ async def result() -> dict:
     return {
         "E-mail":"kikiopeawotile@gmail.com",
         "Current_datetime": f"{now}",
-        "GitHub_URL":"None"
+        "GitHub_URL":"https://github.com/Nifoluwa/HNG"
     }
