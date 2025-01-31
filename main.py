@@ -1,6 +1,9 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
+load_dotenv()
 app = FastAPI()
 
 origins = [
@@ -25,3 +28,8 @@ async def result() -> dict:
         "Current_datetime": f"{now}",
         "GitHub_URL":"https://github.com/Nifoluwa/HNG"
     }
+port = int(os.getenv("PORT", 8001))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port = port)
