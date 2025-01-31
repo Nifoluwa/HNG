@@ -24,9 +24,9 @@ async def test() -> dict:
 async def result() -> dict:
     now = datetime.now().replace(microsecond=0).isoformat()
     return {
-        "E-mail":"kikiopeawotile@gmail.com",
-        "Current_datetime": f"{now}",
-        "GitHub_URL":"https://github.com/Nifoluwa/HNG"
+        "email":"kikiopeawotile@gmail.com",
+        "current_datetime": f"{now}",
+        "github_url":"https://github.com/Nifoluwa/HNG"
     }
 port = int(os.getenv("PORT", 8001))
 
