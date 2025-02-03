@@ -10,7 +10,7 @@ load_dotenv()
 app = FastAPI()
 
 def armstrong_number(number: int):
-    sums = [int(i) ** len(str(number)) for i in str(number)]
+    sums = [int(i) ** len(str(number)) for i in (str(number) if number > 0 else str(number)[1:])]
     total = sum(sums)
     if total == number:
         return "armstrong"
@@ -86,18 +86,23 @@ async def classifier(number: int) -> dict:
     try:
         r = httpx.get(f"{numbers_api}/{number}/math")
         fact = r.text
-        response = {"number": number,
+        response = {
+        "number": number,
         "is_prime": is_prime(number),
         "is_perfect": is_perfect(number),
         "properties": None,
-        "digit_sum": sum([int(i) for i in str(number)]),
-        "fun_fact":f"{fact}"}
+        "digit_sum": None,
+        "fun_fact": f"{fact}"
+        }
         if armstrong_number(number):
             response["properties"] = [armstrong_number(number), f"{odd_or_even(number)}"]
-            return response
         else:
             response["properties"] = [f"{odd_or_even(number)}"]
-            return response
+        if number > 0:
+            response["digit_sum"] = sum([int(i) for i in str(number)])
+        if number < 0:
+            response["digit_sum"]= sum([int(i) for i in str(number)[2:]]) - int(str(number)[1])
+        return response
     except Exception as e:
         return {"Error":"Validate your inputs(Only integers, and try again)"}
 
