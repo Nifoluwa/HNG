@@ -1,4 +1,4 @@
-This project is written as a submission for the HNG backend internship track (Stage 0).
+This project is written as a submission for the HNG backend internship track.
 See <https://hng.tech/internship> for more information about the internship and <https://hng.tech/hire/python-developers>
 for more about the stack used to develop this API
 
@@ -8,6 +8,8 @@ To set up and run locally, install a python version >= 3.10 or greater and in te
 ----Next run the main.py file
 The endpoints should run locally.
 The API is made publicly accessible/deployed from Github using Railway.app (Documentation here: <https://docs.railway.com>)
+
+TASK 0:
 The endpoints are: <https://hng-production-4aa2.up.railway.app/> for an intro page and
                   <https://hng-production-4aa2.up.railway.app/result> as the API with the answers to the task.
 Request Format:
@@ -21,4 +23,9 @@ Response Format:
 "GitHub_URL": A link to this repository.
 }
 
+TASK 1:
+The endpoints are: <https://hng-production-4aa2.up.railway.app/> for an intro page and
+                  <https://hng-production-4aa2.up.railway.app/api/classify-number?number=*> as the API with the answers task one.
+
+Tests have also been written(to the best of my knowledge) to ensure the API meets the task requirements.
 Thank you.
