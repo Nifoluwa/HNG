@@ -84,7 +84,7 @@ async def validation_exception_handler(request, exc):
 @app.get("/api/classify-number")
 async def classifier(number: int) -> dict:
     try:
-        r = httpx.get(f"{numbers_api}/{number}")
+        r = httpx.get(f"{numbers_api}/{number}/math")
         fact = r.text
         response = {"number": number,
         "is_prime": is_prime(number),
@@ -94,6 +94,7 @@ async def classifier(number: int) -> dict:
         "fun_fact":f"{fact}"}
         if armstrong_number(number):
             response["properties"] = [armstrong_number(number), f"{odd_or_even(number)}"]
+            return response
         else:
             response["properties"] = [f"{odd_or_even(number)}"]
             return response
