@@ -1,5 +1,5 @@
 import os
-import requests
+import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
@@ -84,7 +84,7 @@ async def validation_exception_handler(request, exc):
 @app.get("/api/classify-number")
 async def classifier(number: int) -> dict:
     try:
-        r = requests.get(f"{numbers_api}/{number}")
+        r = httpx.get(f"{numbers_api}/{number}")
         fact = r.text
         response = {"number": number,
         "is_prime": is_prime(number),
